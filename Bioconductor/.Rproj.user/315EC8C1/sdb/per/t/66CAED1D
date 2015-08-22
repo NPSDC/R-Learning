@@ -1,0 +1,18 @@
+{
+    "contents" : "#Q1\ntable(expr.meta$GENDER)[[\"2-Female\"]]\n\n#Q2\nmedian(expr.meta$pkyrs)\n\nlibrary(BSgenome.Hsapiens.UCSC.hg19)\n\n#A subsequence starting at base 10^6 and width 25\nsubseq(chr11seq,start=10^6,width=25)\n\nchr11seq <- BSgenome.Hsapiens.UCSC.hg19[[\"chr11\"]]\n#1.2.1\ncountPattern(\"TAA\", chr11seq)\n\nchr7seq <- BSgenome.Hsapiens.UCSC.hg19[[\"chr7\"]]\n#1.2.2\nalphabetFrequency(chr7seq, as.prob = TRUE)[\"C\"]\n\n#1.2.3\nlibrary(SNPlocs.Hsapiens.dbSNP.20120608)\ns17 = getSNPlocs(\"ch17\")\ns17$loc[s17$RefSNP_id == '73971683']\n\n#1.3.1\nboxplot(split(e[\"209169_at\"], tissue) )\n\n#1.3.2\nIDs = c(\"201884_at\", \"209169_at\", \"206269_at\", \"207437_at\", \"219832_s_at\", \"212827_at\")\n",
+    "created" : 1439621572108.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3571809634",
+    "id" : "66CAED1D",
+    "lastKnownWriteTime" : 1440225954,
+    "path" : "~/R-Training/Bioconductor/Ass1.R",
+    "project_path" : "Ass1.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

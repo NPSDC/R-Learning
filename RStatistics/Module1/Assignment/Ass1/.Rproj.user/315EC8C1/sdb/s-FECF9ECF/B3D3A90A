@@ -1,0 +1,17 @@
+{
+    "contents" : "x <- 42 #Assign a variable in R\nrep(\"Yo\", times = 3)\nhelp(sum)\n#demo(packagename) #demo of a function\nexample(min) #givess example of a given function\ngetwd() #gets the directory\n#setwd() #sets the current directory to somewhere\n\n#Environments\n#source(\"filename.R\") #RUns the file\n\n###Vectors\na <- c(4, 7, 9) #Creates a vector\n#Note vectors are homogenous data types i.e all elements are of same datatype\n#basically integer;numeric;complex;character;logical datatypes are there\n#str(a) just see it \n#note to create integer vector use L such as\nb <- c(4L, 7L, 9L)\nd <- c(\"a\", 1, 1.5) #see its output\n#Sequence\nd <- 5:9\nseq(5, 9, 0.5) # jump value\n#1 based index in R and to access a value use vec[index] and to assign vec[3] <- val\n#Vector can be extended like vec[len + 1] <- val\nsentence <- c('walk', 'the', 'plank')\nsentence[4] <- 'to'\nsentence[c(1, 3)]\nsentence[2:4] # Ways of accessing elements\nsentence[5:7] <- c('the', 'poop', 'deck')\n\nranks <- 1:3\nnames(ranks) <- c(\"first\", \"second\", \"third\") #assigning names to vector\n\n#Plotting vectors\nvesselsSunk <- c(4, 5, 1)\nbarplot(vesselsSunk)\n\n#Matrices\nmatrix(0, 3, 4)\na <- 1:12\nmatrix(a, 3, 4) #Note the output it follows fortran like pattern\n#In order to access ith row and jth column use mat[i, j]\n#Matrix plots such as contours etc\n\n#Statisitcs\n\n#Factors\n#Used for grouping data\nchests <- c('gold', 'silver', 'gems', 'gold', 'gems')\ntypes <- factor(chests, levels = c('silver', 'gold', 'gems'))\n#print the above 2 two note difference\n#as.integer(types) #Explicit conversion and also see it\n#you can add your own levels\n\n#Plotting\nweights <- c(300, 200, 100, 250, 150)\nprices <- c(9000, 5000, 12000, 7500, 18000)\nplot(weights, prices) #note the differences w.r.t where circles,traingles etc are drawn\nlegend(\"topright\", levels(types), pch=1:length(levels(types)))\n\n#DataFrames\n#You can think of a data frame as something akin to a database table or an Excel spreadsheet.\n#It has a specific number of columns, each of which is expected to contain values of a particular\n#type. It also has an indeterminate number of rows - sets of related values for each column.\n\ntreasure <- data.frame(weights, prices, types) \nprint(treasure)\ntreasure[[2]] #Access 2nd column\ntreasure$prices #Access 2nd column\ntreasure[\"prices\"] #Access 2nd column\n\n#read.csv(\"filename\") creates a data frame\n#read.table(\"filename\", separator) also creates a data frame\n#Use table when separator is not a comma\n",
+    "created" : 1438872050214.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "236494554",
+    "id" : "B3D3A90A",
+    "lastKnownWriteTime" : 1439062741,
+    "path" : "~/Rtut/learnR.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
