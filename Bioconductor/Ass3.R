@@ -46,7 +46,7 @@ dim(geneAnnotation)
 #Before creating this object we must make sure that the rows of sampleInfo match the columns of geneExpression
 #and that the rows of geneAnnotation match the rows of geneExpression
 #ExpressionSet object we assure this connection is established by forcing the rownames of the assayData
-#to match the rownames of featureData and the rownames of phenoData to match the colnames of assayDat
+#to match the rownames of featureData and the rownames of phenoData to match the colnames of assayData
 
 #3.3.3
 pd <-AnnotatedDataFrame(as.data.frame(geneExpression))
@@ -97,7 +97,7 @@ annotation(ab)
 
 e <- rma(ab) #What we have is probe level info and we want it in gene level which is done by it
 
-e <- justRMA(filenames = llist.celfiles(), phenoData = tab) #Without storing the probe level data
+e <- justRMA(filenames = list.celfiles(basedir), phenoData = tab) #Without storing the probe level data
 
 ##Agilent for 2 color arrays
 library(limma)
@@ -118,10 +118,24 @@ dev.off()
 library(BiocInstaller)
 library(hgu95acdf)
 #3.4.1
-tab <- read.delim(file.path( "sampleinfo.txt"), h , as.is = T)
+tab <- read.delim(file.path( "sampleinfo.txt"), check.names = T , as.is = T)
 rownames(pData(e))<- tab$filenames
 pData(e)["1521a99hpp_av06.CEL.gz", "36311_at"]
 
 #3.4.2
 ab <- ReadAffy(filenames = list.celfiles(), phenoData = tab)
 length(which(probeNames(ab) == "36311_at"))
+
+#3.4.3
+mat = pm(ab)[which(probeNames(ab) == "36085_at"),]
+conc = pData(ab)[c('1532a99hpp_av04.CEL.gz', '1532b99hpp_av04.CEL.gz'), 'X36085_at']
+xMat = t(sapply(conc, function(x)
+  {
+  rep(x, length(rownames(mat)))
+}))
+ #3.4.4
+e <- rma(ab)
+g = factor(pData(ab)[,2])
+library(genefilter)
+#Null Hypothesis
+#t-test p-value

@@ -1,0 +1,6 @@
+dat = read.csv('dagdata-master/inst/extdata/femaleMiceWeights.csv')
+mean(dat[13:24,2]) - mean(dat[1:12,2])
+s = split(dat[,2], dat[,1])
+stripchart(s, vertical=TRUE, col=1:2)
+abline(h = sapply(s, mean), col=1:2)
+length(which(s$hf < mean(s$chow)))
